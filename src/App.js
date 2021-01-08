@@ -1,33 +1,70 @@
 import React, { useEffect, useState } from 'react'
-import Loguin from './components/Loguin'
+import Login from './components/Login'
+import Page from './components/page'
 import { getTokenFromResponse } from './spotify'
 import spotifyWeb from 'spotify-web-api-js'
+import dotenv from 'dotenv/config'
 
+import { useStateValue } from './DataProvider'
+import {ACTION} from './reducer'
+
+const playlistUser = process.env.REACT_APP_PLAYLIST_USER
 const spotify = new spotifyWeb()
-
 function App() {
-  const [token, setToken] = useState(null)
+  const [{ token }, dispatch] = useStateValue();
 
   useEffect(() => {
-    const token = getTokenFromResponse().access_token
-    window.location.hash = ''
+    // Set token
+    const hash = getTokenFromResponse();
+    let _token = hash.access_token;
 
-    if(token){
-      setToken(token)
-      spotify.setAccessToken(token)
-      spotify.getMe().then(user => {
-        console.log(user)
-      })
+    if (_token) {
+      spotify.setAccessToken(_token);
+
+      dispatch({
+        type: ACTION.SET_TOKEN,
+        token: _token,
+      });
+
+      spotify.getPlaylist(playlistUser).then((response) =>
+        dispatch({
+          type: ACTION.SET_DISCOVER_WEEKLY,
+          discover_weekly: response,
+        })
+      );
+
+      spotify.getMyTopArtists().then((response) =>
+        dispatch({
+          type: ACTION.SET_TOP_ARTISTS,
+          top_artists: response,
+        })
+      );
+
+
+
+      spotify.getMe().then((user) => {
+        dispatch({
+          type: ACTION.SET_USER,
+          user,
+        });
+      });
+
+      spotify.getUserPlaylists().then((playlists) => {
+        dispatch({
+          type: ACTION.SET_PLAYLIS,
+          playlists: playlists,
+        });
+      });
     }
-  }, [])
-
+  }, [token, dispatch]);
 
   return (
-    <div className="App">
-      <h1>Tesste</h1>
-      {token? <h1>Tudo certo!!</h1>: <Loguin/>}
-    </div>
+      <div className="App">
+        {token ? <Page spotify={spotify}/> : <Login />}
+
+      </div>
   );
 }
 
 export default App;
+
