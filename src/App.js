@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './App.css'
 import Login from './components/Login'
 import Page from './components/page'
 import { getTokenFromResponse } from './spotify'
@@ -49,10 +50,10 @@ function App() {
         });
       });
 
-      spotify.getUserPlaylists().then((playlists) => {
+      spotify.getUserPlaylists().then((playlist) => {
         dispatch({
-          type: ACTION.SET_PLAYLIS,
-          playlists: playlists,
+          type: ACTION.SET_PLAYLISTS,
+          playlists: playlist,
         });
       });
     }
@@ -60,7 +61,7 @@ function App() {
 
   return (
       <div className="App">
-        {token ? <Page spotify={spotify}/> : <Login />}
+        {token ? <Page/> : <Login />}
 
       </div>
   );
