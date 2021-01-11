@@ -3,4 +3,90 @@
     width: 100%;
     background-color: #282828;
     border-top: 1px solid rgb(58, 58, 58);
+    z-index: 2;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
+.controls{
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+.footer > div button {
+    background-color: transparent;
+    border: none; 
+    cursor: pointer; 
+    font-size: 60px;
+    padding: 0px;
+    margin: 10px 10px 15px 10px;
+    border-radius: 25px;
+    color: #949494;
+}
+.footer > div button > svg{
+    border-radius: 25px;
+}
+.footer > div button > svg:hover{
+    color: #cecece;
+    font-size: 62px;
+}
+audio{
+    display: inline-block;
+}
+.pause{
+    display: none;
+}
+
+.cont-timer, .max-timer{
+    color: #cecece;
+    margin: 20px;
+    font-weight: 600;
+}
+
+.card-icon-info{
+    position: absolute;
+    left: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+}
+.card-icon-info img{
+    height: 55px;
+    align-self: center;
+}
+.card-music-info{
+    /* background-color: red; */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 350px;
+    margin: 10px 10px;
+}
+.card-music-info a {
+    text-decoration: none;
+    color: white;
+    margin: 10px 0px ;
+}
+.card-music-info a:hover{
+    text-decoration: underline;
+}
+.card-music-info span i:last-child i:last-child{
+    display: none;
+}
+.card-music-info span{
+    font-size: 14px;
+}
+
+@media (max-width: 750px) { 
+    .card-music-info{
+        width: 150px;
+    }
+    .footer{
+        justify-content: flex-end;
+    }
+ }

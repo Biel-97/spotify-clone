@@ -1,10 +1,18 @@
 .display{
   background: rgb(237,143,182);
-  background: linear-gradient(180deg, rgb(197, 117, 151)  0%, rgba(18,18,18,1) 69%);
+  background: linear-gradient(180deg, rgb(236, 142, 181)  0%, rgba(18,18,18,1) 69%);
   width: 100%;
+  height: 100%;
   font-family: 'Roboto', sans-serif;
+  z-index: 2;
+  overflow-y: overlay;
+  overflow-x: hidden;  
 }
 
+.content{
+  display: flex;
+  justify-content: space-between;
+}
 .display-header{
   max-height: 500px;
   min-height: 340px;
@@ -14,9 +22,12 @@
   justify-content: flex-end;
 }
 .display-body{
+  display: flex;
+  flex-direction: row;
+  color: white;
   width: 100%;
-  height: calc(100% - 340px);
-  background-color: rgb(0, 0, 0, 0.1);
+  background: rgb(95,61,75);
+  background: linear-gradient(180deg, rgba(95,61,75,1) 0%, rgb(73, 48, 59) 0%, rgba(18,18,18,1) 8%);;
 }
 
 .user-icon{

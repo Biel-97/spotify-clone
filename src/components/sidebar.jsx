@@ -7,23 +7,35 @@ import { faSpotify } from '@fortawesome/free-brands-svg-icons'
 import { useStateValue } from "../DataProvider";
 
 function Login() {
-    const [{ playlists}, dispatch] = useStateValue();
+    const [{ playlists, Next_playlist, discover_weekly}, dispatch] = useStateValue();
     const [playlist_state, set_playlist_state] = useState('')
 
     useEffect(() => {
         if (playlists != null || playlists !== undefined) {
             set_playlist_state(playlists)
-
+            // console.log(playlists)
         }
+
     }, [playlists])
+
+
+
+    function setNext(element){
+        dispatch({
+            type: "NEXT_PLAYLIST",
+            Next_playlist: element
+        })
+        // console.log(element)
+        // console.log(Next_playlist)
+    }
 
     function render_playlist(params) {
         let cont = 0
         let element = []
-
         if (params !== undefined && params !== '') {
             params.items.map((e) => {
-                element.push(<SideElement text={e.name} key={cont} />)
+                element.push( <i key={e.id} onClick={() => setNext(e)}> <SideElement text={e.name}  /> </i>)
+                
                 cont ++
             })
         }
