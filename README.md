@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+<p> If you want to take a look on all screens of the App, click <a href="https://spotify---clone.herokuapp.com/" target="_blank">here.</a></p>
+<h2>Goal</h2> 
+<p><i>"Use my knowledge to improve and test my skills as a programmer".:rocket:</i></p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>This project is part of my portfolio, so feel free to get in touch for feedback on the code, structure or other reason that will help me become a better programmer!</p>
 
-## Available Scripts
+<span>E-mail: <a>gabriel.pso100@gmail.com</a ></span><br>
+<span><a target="_blank" href="https://www.linkedin.com/in/gabriel-97-oliveira">linkedin</a></span><br>
 
-In the project directory, you can run:
+<h2>Observations</h2>
+<Strong>:rocket: working still in progress</strong>. :rocket:<br>
+<p>it was utilized the spotify api to get users data, you can check <a target="_blank" href="https://github.com/thelinmichael/spotify-web-api-node"> here</a>.</p><p>you can find more informations about the libraties<a target="_blank" href="https://developer.spotify.com/documentation/web-api/libraries/"> here</a>.</p>
 
-### `npm start`
+<h4>Cloning the Repository</h4><br>
+<span>$ git clone https://github.com/Biel-97/spotify-clone</span><br>
+<span>$ cd spotify-clone</span><br>
+<span>$ npm install</span><br><br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h2>setting the app</h2>
+Now, three things are importants:<br>
+config your <strong>dashboard</strong> to config your redirect url.<br>
+make sure to get your <strong>API KEY </strong>to guarantee your access.<br>
+its important create a <strong>.env</strong>  file in the root application with the following variables:<br><br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<strong>REACT_APP_REDIRECT_URL </strong> <i>---- </i>this url must be the same as you project dashboard settings.<br>
 
-### `npm test`
+<strong>REACT_APP_ID </strong> <i>---- </i>this token must be the same as you project dashboard settings.<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ notice that you can config your <strong>dashboard</strong> and get your <strong>token</strong> <a target="_blank" href="https://developer.spotify.com/dashboard/">here</a>.
 
-### `npm run build`
+<p>By default, the react-app will be running in the port 3000 so, the browser url, REACT_APP_REDIRECT_URL and redirect url variable must be: <Strong>http://localhost:3000/</strong> to run in development environment.</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2>Built With</h2>
+<span>• React JS </span><br>
+<span>• spotify web api</span><br><br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<hr>
+<span>E-mail: <a>gabriel.pso100@gmail.com</a ></span><br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<span><a href ="http://www.linkedin.com/in/gabriel-97-oliveira" target="_blank">LinkedIn</a> </span><br>
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+:thumbsup:
