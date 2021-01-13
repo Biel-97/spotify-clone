@@ -1,6 +1,7 @@
 .display{
-  background: rgb(237,143,182);
-  background: linear-gradient(180deg, rgb(236, 142, 181)  0%, rgba(18,18,18,1) 69%);
+  /* background: rgb(237,143,182); */
+  background: rgba(18,18,18,1);
+  background: linear-gradient(180deg, rgb(236, 142, 181)  0%, rgb(18,18,18) 69%);
   width: 100%;
   height: 100%;
   font-family: 'Roboto', sans-serif;
@@ -8,7 +9,11 @@
   overflow-y: overlay;
   overflow-x: hidden;  
 }
-
+.music-list{
+  width: 100%;
+  background: rgb(0, 0, 0, 0.001);
+  
+}
 .content{
   display: flex;
   justify-content: space-between;
@@ -22,12 +27,11 @@
   justify-content: flex-end;
 }
 .display-body{
+  background: linear-gradient(180deg, rgb(73, 48, 59) 0%, rgba(18,18,18,1) 8%);
   display: flex;
   flex-direction: row;
   color: white;
   width: 100%;
-  background: rgb(95,61,75);
-  background: linear-gradient(180deg, rgba(95,61,75,1) 0%, rgb(73, 48, 59) 0%, rgba(18,18,18,1) 8%);;
 }
 
 .user-icon{

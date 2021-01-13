@@ -13,20 +13,18 @@ function Login() {
     useEffect(() => {
         if (playlists != null || playlists !== undefined) {
             set_playlist_state(playlists)
-            // console.log(playlists)
         }
 
-    }, [playlists])
+    }, [playlists, discover_weekly])
 
 
 
     function setNext(element){
+        console.log(element)
         dispatch({
             type: "NEXT_PLAYLIST",
             Next_playlist: element
         })
-        // console.log(element)
-        // console.log(Next_playlist)
     }
 
     function render_playlist(params) {
@@ -34,10 +32,13 @@ function Login() {
         let element = []
         if (params !== undefined && params !== '') {
             params.items.map((e) => {
+
                 element.push( <i key={e.id} onClick={() => setNext(e)}> <SideElement text={e.name}  /> </i>)
-                
                 cont ++
             })
+            if(discover_weekly){
+                element.push(<i key={discover_weekly.id} onClick={() => setNext(discover_weekly)}> <SideElement text={discover_weekly.name}  /> </i>)
+            }
         }
         return element
     }
@@ -55,7 +56,7 @@ function Login() {
             </div>
 
             <br />
-            <span>PLAYLIST&nbsp;({playlist_state.total})</span>
+            <span>PLAYLIST&nbsp;</span>
             {render_playlist(playlist_state)}
 
         </div>

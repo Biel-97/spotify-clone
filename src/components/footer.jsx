@@ -1,34 +1,51 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlayCircle, faPauseCircle, faStepForward, faStepBackward } from '@fortawesome/free-solid-svg-icons'
+import { faPlayCircle, faPauseCircle } from '@fortawesome/free-solid-svg-icons'
 
-import { GoToAlbum, GoToArtists, timeTransform, GoToMusic } from './utils'
+import { GoToAlbum, GoToArtists } from './utils'
 
 import { useStateValue } from "../DataProvider";
 
-const setbuttonToStop = () => {
-    let startButton = document.querySelector('.start')
-    startButton.style.display = 'none'
 
-    let pauseButton = document.querySelector('.pause')
-    pauseButton.style.display = 'inline-block'
-}
+
 
 
 function Footer() {
-
-    const audioPlayer = useRef();
-
+    
     const [{ track }, dispatch] = useStateValue();
-    const [audioInfo, setAudioInfo] = useState(0)
+    const [currentTime, setcurrentTime] = useState('0')
     const [playPromise, setplayPromise] = useState()
 
-useEffect(() => {
-    startTrack()
-    setbuttonToStop()
+    const audioPlayer = useRef();
+    const playButton = useRef();
+    const StopButton = useRef();
 
-}, [track])
+    const changeButton = function (a) {
+        if (a) {
+            playButton.current.style.display = 'none'
+            StopButton.current.style.display = 'inline-block'
+        } else {
+            playButton.current.style.display = 'inline-block'
+            StopButton.current.style.display = 'none'
+        }
+    }
+
+
+
+    useEffect(() => {
+        setInterval(function () {
+            let ms = audioPlayer.current.currentTime
+            setcurrentTime(parseFloat(ms).toFixed(0))
+            if (ms >= 29.9) { changeButton(1) }
+        }, 1000)
+    }, [])
+
+    useEffect(() => {
+        if (track !== null && track !== '') {
+            startTrack()
+        }
+    }, [track])
 
 
     const backstep = () => {
@@ -38,15 +55,11 @@ useEffect(() => {
 
 
     const startTrack = (e) => {
-
-        setbuttonToStop()
-        audioPlayer.current.volume = 0.3
-        setplayPromise(audioPlayer.current.play())
-
-        if (!audioPlayer) {
-            console.log('?')
+        if (track !== null && track !== '') {
+            changeButton(1)
+            audioPlayer.current.volume = 0.3
+            setplayPromise(audioPlayer.current.play())
         }
-        // console.log(audioPlayer.current.played.end(0))
     }
 
 
@@ -61,7 +74,7 @@ useEffect(() => {
             pauseButton.style.display = 'none'
             playPromise
                 .then(() => audioPlayer.current.pause())
-                .catch(error => console.log(error));
+                .catch(error => console.error(error));
         }
     }
 
@@ -87,17 +100,18 @@ useEffect(() => {
 
             </div>
             <div className="controls">
-                <audio src={track.preview} ref={audioPlayer}><p>Seu nevegador não suporta o elemento audio</p></audio>
-                {/* <span className="cont-timer">0:{audioInfo}</span> */}
+                <audio src={track.preview} ref={audioPlayer}
+                ><p>Seu nevegador não suporta o elemento audio</p></audio>
+                <span className="cont-timer">0:{currentTime}</span>
 
                 {/* <button onClick={() => backstep()}><FontAwesomeIcon icon={faStepBackward} /></button> */}
 
-                <button className="start" onClick={(e) => startTrack(e)}><FontAwesomeIcon icon={faPlayCircle} /></button>
-                <button className="pause" onClick={(e) => pauseTrack(e)}><FontAwesomeIcon icon={faPauseCircle} /></button>
+                <button className="pause" ref={StopButton} onClick={(e) => pauseTrack(e)}><FontAwesomeIcon icon={faPauseCircle} /></button>
+                <button className="start" ref={playButton} onClick={(e) => startTrack(e)}><FontAwesomeIcon icon={faPlayCircle} /></button>
 
                 {/* <button onClick={(e) => callNext()}><FontAwesomeIcon icon={faStepForward} /></button> */}
 
-                {/* <span className="max-timer">0:30</span> */}
+                <span className="max-timer">0:30</span>
             </div>
         </div>
     )

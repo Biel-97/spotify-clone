@@ -33,25 +33,25 @@ function Display() {
 
             }
         }
-        // if(user !== undefined &&  Next_playlist !== ''){
-        //     if (user.images) {
-        //         setusericon(
-        //             <span className="user-icon">
-        //                 <FontAwesomeIcon icon={faUser} />
-        //                 {user.display_name}
-        //                 <FontAwesomeIcon icon={faSortDown} />
-        //             </span>
-        //         )
-        //     } else { setusericon(user.images[0]) }
-        //     if (Next_playlist !== undefined && Next_playlist !== null) {
+        if(user !== undefined &&  Next_playlist !== ''){
+            if (user.images) {
+                setusericon(
+                    <span className="user-icon">
+                        <FontAwesomeIcon icon={faUser} />
+                        {user.display_name}
+                        <FontAwesomeIcon icon={faSortDown} />
+                    </span>
+                )
+            } else { setusericon(user.images[0]) }
+            if (Next_playlist !== undefined && Next_playlist !== null) {
 
-        //         setHeader({
-        //             img: Next_playlist.images[0].url,
-        //             description: Next_playlist.description,
-        //             name_Banner: Next_playlist.name
-        //         })
-        //     }
-        // }
+                setHeader({
+                    img: Next_playlist.images[0].url,
+                    description: Next_playlist.description,
+                    name_Banner: Next_playlist.name
+                })
+            }
+        }
     }, [user, discover_weekly, Next_playlist])
 
     return (

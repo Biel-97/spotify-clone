@@ -7,10 +7,12 @@ function SideElement({ text, Icon }) {
 
   function back(e) {
     if (e.target.lastChild.innerHTML == 'Inicio' || e.target.lastChild.innerHTML == 'Home' || e.target.innerHTML == 'Inicio' || e.target.innerHTML == 'Home') {
-      dispatch({
-        type: "SET_TOKEN",
-        token: null,
-      });
+      
+      window.open(process.env.REACT_APP_REDIRECT_URL, '_self')
+      // dispatch({
+      //   type: "SET_TOKEN",
+      //   token: null,
+      // });
     }
   }
 

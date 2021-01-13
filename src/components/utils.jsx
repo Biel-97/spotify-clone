@@ -21,9 +21,17 @@ export const GoToArtists = (names) => {
 
     })
 }
+export const lastUpdate = (past) => {
+    const now = new Date()
+    const pastDate = new Date(past.substring(0, 10))
+    const diff = Math.abs(now.getTime() - pastDate.getTime())
+    return Math.ceil(diff / (1000 * 60 * 60 * 24))
+}
 
 export const timeTransform = (ms) => {
     let d = new Date(ms);
     let num = parseFloat(d.getUTCMinutes() + '.' + d.getUTCSeconds()).toFixed(2)
     return num.replaceAll('.', ':')
 }
+
+export let setRandomColor = () => `${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)}`

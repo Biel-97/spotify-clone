@@ -68,9 +68,10 @@ audio{
     margin: 10px 10px;
 }
 .card-music-info a {
+    font-size: 15px;
     text-decoration: none;
     color: white;
-    margin: 10px 0px ;
+    margin: 8px 0px ;
 }
 .card-music-info a:hover{
     text-decoration: underline;
