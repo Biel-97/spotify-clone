@@ -15,24 +15,25 @@ import Display from './components/display'
 const playlistUser = process.env.REACT_APP_PLAYLIST_USER
 const spotify = new spotifyWeb()
 function App() {
-  const [{ token, Next_playlist, Set_Current_PlayList, discover_weekly }, dispatch] = useStateValue();
+  const [{ token, Next_playlist, discover_weekly, Recently_Played }, dispatch] = useStateValue();
 
   useEffect(() => {
     const display = document.querySelector('.display')
     const displayBody = document.querySelector('.display-body')
 
     const color = setRandomColor()
-    if (Next_playlist !== '') {
+    if (Next_playlist !== '' && display !== null) {
+
       display.style.background = `linear-gradient(180deg, rgb(${color})  0%, rgb(18,18,18) 69%)`
       displayBody.style.background = `linear-gradient(180deg, rgba(${color}, 0.1)  0%, rgb(18,18,18) 69%)`
-
+      
       spotify.getPlaylist(Next_playlist.id).then((response) => {
         dispatch({
           type: ACTION.SET_CURRENT_PLAYLIST,
           Set_Current_PlayList: response,
         })
       })
-      if (Next_playlist.name == discover_weekly.name) {
+      if (Next_playlist.name == discover_weekly.name && display !== null) {
         display.style.background = `linear-gradient(180deg, rgb(236, 142, 181)  0%, rgb(18,18,18) 69%)`
         displayBody.style.background = `linear-gradient(180deg, rgb(73, 48, 59) 0%, rgba(18,18,18,1) 8%)`
       }
@@ -70,11 +71,13 @@ function App() {
         })
       );
 
-      spotify.getMyTopArtists().then((response) =>
+      spotify.getMyTopArtists().then((response) =>{
+      // console.log(response)
         dispatch({
           type: ACTION.SET_TOP_ARTISTS,
           top_artists: response,
         })
+      }
       );
 
 
@@ -87,10 +90,20 @@ function App() {
       });
 
       spotify.getUserPlaylists().then((response) => {
-        console.log(response)
         dispatch({
           type: ACTION.SET_PLAYLISTS,
           playlists: response,
+        });
+      });
+
+      spotify.getMyRecentlyPlayedTracks({
+        limit : 20,
+        offset: 1
+      })
+      .then((response) => {
+        dispatch({
+          type: ACTION.RECENTLY_PLAYED,
+          Recently_Played: response,
         });
       });
     }

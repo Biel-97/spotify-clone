@@ -4,17 +4,22 @@
     align-items: center;
     font-family: 'IBM Plex Sans', sans-serif; 
     margin: 10px;
+
+    text-decoration: none;
 }
 
 .side-header{
     color: rgb(235, 235, 235);
     margin-bottom: 10px;
 }
-
-.side-icon svg{
+.side-icon > a{
+    color: white;
+    text-decoration: none;
+}
+.side-icon > a svg{
     font-size: 40px;
 }
-.side-icon span {
+.side-icon > a span {
     font-size: 25px;
     align-self: center;
     padding-left: 5px;

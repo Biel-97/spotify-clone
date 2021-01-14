@@ -7,7 +7,7 @@ import { faSpotify } from '@fortawesome/free-brands-svg-icons'
 import { useStateValue } from "../DataProvider";
 
 function Login() {
-    const [{ playlists, Next_playlist, discover_weekly}, dispatch] = useStateValue();
+    const [{ playlists, Next_playlist, discover_weekly }, dispatch] = useStateValue();
     const [playlist_state, set_playlist_state] = useState('')
 
     useEffect(() => {
@@ -19,8 +19,8 @@ function Login() {
 
 
 
-    function setNext(element){
-        console.log(element)
+    function setNext(element) {
+        // console.log(element)
         dispatch({
             type: "NEXT_PLAYLIST",
             Next_playlist: element
@@ -33,11 +33,11 @@ function Login() {
         if (params !== undefined && params !== '') {
             params.items.map((e) => {
 
-                element.push( <i key={e.id} onClick={() => setNext(e)}> <SideElement text={e.name}  /> </i>)
-                cont ++
+                element.push(<i key={e.id} onClick={() => setNext(e)}> <SideElement text={e.name} /> </i>)
+                cont++
             })
-            if(discover_weekly){
-                element.push(<i key={discover_weekly.id} onClick={() => setNext(discover_weekly)}> <SideElement text={discover_weekly.name}  /> </i>)
+            if (discover_weekly) {
+                element.push(<i key={discover_weekly.id} onClick={() => setNext(discover_weekly)}> <SideElement text={discover_weekly.name} /> </i>)
             }
         }
         return element
@@ -45,12 +45,15 @@ function Login() {
     return (
         <div className="sideBar">
             <h1 className="side-icon">
-                <FontAwesomeIcon icon={faSpotify} />
-                <span>Spotify</span>
+                <a href={process.env.REACT_APP_REDIRECT_URL}>
+
+                    <FontAwesomeIcon icon={faSpotify} />
+                    <span>Spotify</span>
+                </a>
             </h1>
             <div className="side-header">
                 <SideElement text={'Inicio'} Icon={<FontAwesomeIcon icon={faHome} />}></SideElement>
-                <SideElement text={'Pesquisa'} Icon={<FontAwesomeIcon icon={faSearch} />}></SideElement>
+                {/* <SideElement text={'Pesquisa'} Icon={<FontAwesomeIcon icon={faSearch} />}></SideElement> */}
                 <SideElement text={'Sua biblioteca'} Icon={<FontAwesomeIcon icon={faStream} />}></SideElement>
 
             </div>

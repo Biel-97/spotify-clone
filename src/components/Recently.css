@@ -1,0 +1,93 @@
+.Recently{
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 40px 30px 30px 30px;
+
+}
+.Recently-cards{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    max-height: 560px;
+    overflow: hidden; 
+
+}
+.album-card{
+    background: rgb(21, 21, 21);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 15px 5px 15px;
+    height: 270px;
+    width: 190px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.card-link{
+    position: absolute;
+    /* background: red; */
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: 100ms ease-in;
+}
+.album-card > span{
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    margin: 15px 0px 0px 0px;
+    font-size: 16px;
+    font-weight: 900;
+    text-decoration: none;
+    color: rgb(224, 224, 224);
+}
+.album-artists > a {
+    font-size: 14px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 900;
+    white-space: 3px;
+    color: rgb(165, 165, 165);
+    z-index: 2;
+}
+
+.album-card >a:hover{
+    text-decoration: underline;
+}
+.album-button-play {
+    position: relative;
+    height: 150px;
+}
+
+.album-button-play img {
+    position: absolute;
+    height: 162px;
+    align-self: center;
+    border-radius: 5px;
+    
+}
+.album-artists {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0px 0px 0px;
+}
+
+.album-artists a:hover{
+    text-decoration: underline;
+}
+
+.album-artists a:last-child i:last-child{
+    display: none;
+}
+
+.card-link{
+    left: 0px;
+    top: 0px;
+    border-radius: 5px;
+}
+.card-link:hover{
+    background: rgb(255, 255, 255, 0.1);
+}

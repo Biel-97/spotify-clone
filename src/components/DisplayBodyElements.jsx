@@ -2,7 +2,7 @@ import React from 'react'
 import MusicCard from './musicCard'
 import './DisplayBodyElement.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faPlayCircle, faClock } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faPlay, faClock, faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 
 function DisplayBodyElements() {
@@ -12,7 +12,7 @@ function DisplayBodyElements() {
             <div className="music-list" >
                 <div className="pre-title">
                     <span className="play">
-                        <FontAwesomeIcon icon={faPlayCircle} />
+                        <FontAwesomeIcon icon={faPlay} />
                     </span>
                     <span className="heart">
                         <FontAwesomeIcon icon={faHeart} />
@@ -23,7 +23,7 @@ function DisplayBodyElements() {
 
                     <span className="hash"><span>#</span> TÍTULO</span>
                     <span className="title-music album">ÁLBUM</span>
-                    <span className="added_at">DATA ADICIONADA</span>
+                    <span className="added_at"><FontAwesomeIcon icon={faCalendarAlt}/> </span>
                     <span className="span-time"><FontAwesomeIcon icon={faClock} /></span>
                 </div>
                 <MusicCard/>

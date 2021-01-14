@@ -73,6 +73,9 @@
     display: flex;
     justify-content: flex-start;
 }
+.title .album {
+    margin-left: 45px;
+}
 .album > a {
     /* white-space: nowrap; 
     text-overflow: ellipsis;  */
@@ -84,6 +87,10 @@
     color: var(--dark-gray);
     display: flex;
     justify-content: center; 
+}
+.added_at svg{
+    font-size: 20px;
+    margin-left: 10px;
 }
 
 .hash span{
@@ -110,16 +117,21 @@
 .pre-title svg{
     color: #1DB954;
 }
+.play svg{
+    font-size: 50px;
+    transition: 200ms ease-in;
+    cursor: pointer;
+}
+.play svg:hover{
+    font-size: 60px;
+}
 .play{
     position: relative;
-    font-size: 59px;
-    background-color: white;
     width: 50px;
     border-radius: 100%;
     display: flex;
     justify-content: center;
     align-self: center;
-    
 }
 .heart{
     margin: 0px  40px ;

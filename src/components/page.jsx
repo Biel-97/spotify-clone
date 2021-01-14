@@ -1,40 +1,62 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from './sidebar'
 import Display from './display'
+import Home from './Home'
 import Footer from './footer'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { useStateValue } from "../DataProvider";
-import { ACTION } from '../reducer'
+
 
 
 
 function Page() {
-    const [{ playlists, user, playing, discover_weekly, top_artists }, dispatch] = useStateValue();
-    // console.log(playlists)
-    const [nome, setnome] = useState('')
+    const [{ user, Set_Page_View }, dispatch] = useStateValue();
+    const [nomeCard, setNomeCard] = useState('')
 
     useEffect(() => {
-        if (user !== undefined) {
-            setnome(user.display_name)
+        if (user !== null) {
+            // if(user.images !== undefined){
+            //     console.log('com')
+
+            // }else{
+
+            //     console.log('sem')
+            // }
+            // if(user.images !== undefined){
+            //     console.log('!== undefined images')
+
+            // }
+            // if(user.images[0] !== undefined){
+            // console.log(user.images[0])
+            // // setNomeCard(
+            // //     <span className="user-icon">
+            // //         <img src={user.images[0]} alt=""/>
+            // //     </span>
+            // // )
+            // }
+        } else {
+            console.log('nao')
         }
     }, [user])
 
-    function back() {
-        dispatch({
-            type: ACTION.SET_TOKEN,
-            token: null,
-        });
-    }
+
     return (
         <>
-            {/* <button onClick={e => back(e)}>
-                Voltar
-            </button> */}
             <div className="content">
                 <Sidebar></Sidebar>
-                <Display></Display>
+            {/* <div className="user-icon">
+
+                {(user?.images[0]?.url) !== undefined ? <img src={user?.images[0]?.url} alt="" /> : <FontAwesomeIcon icon={faUser} />}
+                <span>{user?.display_name}</span>
+                <FontAwesomeIcon icon={faSortDown} />
+            </div> */}
+
+                {Set_Page_View == true ? <Home /> : <Display />}
+
             </div>
-            <Footer/>
+            <Footer />
 
         </>
     )

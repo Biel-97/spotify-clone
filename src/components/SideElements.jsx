@@ -1,19 +1,32 @@
 import React from "react";
 import './sidebar.css'
 import { useStateValue } from "../DataProvider";
-
+import {ACTION} from '../reducer'
 function SideElement({ text, Icon }) {
   const [{ }, dispatch] = useStateValue();
 
   function back(e) {
-    if (e.target.lastChild.innerHTML == 'Inicio' || e.target.lastChild.innerHTML == 'Home' || e.target.innerHTML == 'Inicio' || e.target.innerHTML == 'Home') {
-      
-      window.open(process.env.REACT_APP_REDIRECT_URL, '_self')
-      // dispatch({
-      //   type: "SET_TOKEN",
-      //   token: null,
-      // });
+    if (text == 'Inicio') {
+
+      dispatch({
+        type: ACTION.SET_PAGE_VIEW,
+        Set_Page_View: true
+      });
+
+    }else if(text == 'Sua biblioteca'){
+      console.log('Sua biblioteca')
     }
+
+    if (!Icon) {
+
+      console.log('Va para a playlist ' + text)
+      dispatch({
+        type: ACTION.SET_PAGE_VIEW,
+        Set_Page_View: false
+      });
+
+    }
+
   }
 
   return (

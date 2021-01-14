@@ -35,9 +35,13 @@ function Footer() {
 
     useEffect(() => {
         setInterval(function () {
-            let ms = audioPlayer.current.currentTime
-            setcurrentTime(parseFloat(ms).toFixed(0))
-            if (ms >= 29.9) { changeButton(1) }
+            if(audioPlayer !== null){
+                setcurrentTime(parseFloat(audioPlayer.current.currentTime).toFixed(0))
+                if (audioPlayer.current.currentTime >= 29.9) { changeButton(1) }
+            }if(audioPlayer == null){
+                console.log('erro')
+                console.log(audioPlayer)
+            }
         }, 1000)
     }, [])
 

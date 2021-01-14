@@ -71,7 +71,7 @@ function MusicCard() {
                             </div>
                         </div>
                         <span className="title-music album">{GoToAlbum(e.track.album)}</span>
-                        <span className="added_at" >há {lastUpdate(e.added_at)} dias</span>
+                        <span className="added_at" >{lastUpdate(e.added_at)} days ago</span>
                         <span className="timer">{timeTransform(e.track.duration_ms)}</span>
                     </div>
                 } else {
@@ -87,7 +87,7 @@ function MusicCard() {
                             </div>
                         </div>
                         <span className="title-music album">{GoToAlbum(e.track.album)}</span>
-                        <span className="added_at" >há {lastUpdate(e.added_at)} dias</span>
+                        <span className="added_at" >{lastUpdate(e.added_at)} days ago</span>
                         <span className="timer">{timeTransform(e.track.duration_ms)}</span>
                     </div>
                 }

@@ -1,0 +1,50 @@
+.topArtists{
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    flex-wrap: wrap;
+    margin: 30px;
+    /* border: 1px solid white; */
+    
+} 
+/* .topArtists > div {
+    display: flex;
+    justify-content: space-around;
+} */
+.artistsCards{
+    display: flex;
+    flex-wrap: wrap;
+    height: 520px;
+    overflow: hidden; 
+}
+.artists-Card > span {
+    color: rgb(160, 160, 160);
+    font-size: 13px;
+}
+.artists-Card > p {
+    font-size: 14px;
+    margin: 5px 0px 5px 0px;
+}
+.artists-Card {
+    background: rgb(21, 21, 21);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 250px;
+    width: 190px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.artists-Card > i {
+    position: relative;
+}
+
+
+.artists-Card > i img{
+    border-radius: 100%;
+    margin-bottom: 5px;
+    height: 170px;
+    width: 170px;
+}

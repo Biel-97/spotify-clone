@@ -9,6 +9,8 @@ export const initialState = {
     item: null,
     Next_playlist: '',
     SET_CURRENT_PLAYLIST: '',
+    Recently_Played: null,
+    Set_Page_View: true,
     track: ''
 
 }
@@ -21,7 +23,9 @@ export const ACTION = {
   SET_TRACK: "SET_TRACK",
   SET_PLAYLISTS: "SET_PLAYLISTS",
   SET_CURRENT_PLAYLIST: "SET_CURRENT_PLAYLIST",
-  NEXT_PLAYLIST: "NEXT_PLAYLIST"
+  NEXT_PLAYLIST: "NEXT_PLAYLIST",
+  RECENTLY_PLAYED: "RECENTLY_PLAYED",
+  SET_PAGE_VIEW: "SET_PAGE_VIEW"
 }
 
 const reducer = (state, action) => {
@@ -50,12 +54,12 @@ const reducer = (state, action) => {
         ...state,
         token: action.token,
       };
+
       case ACTION.SET_TRACK:
         return{
           ...state,
           track: action.track
         }
-
 
     case ACTION.SET_PLAYLISTS:
       return {
@@ -68,10 +72,23 @@ const reducer = (state, action) => {
           ...state,
           Next_playlist: action.Next_playlist,
         };
+
       case ACTION.SET_CURRENT_PLAYLIST:
         return {
           ...state,
           Set_Current_PlayList: action.Set_Current_PlayList,
+        };
+
+      case ACTION.RECENTLY_PLAYED:
+        return {
+          ...state,
+          Recently_Played: action.Recently_Played,
+        };
+
+      case ACTION.SET_PAGE_VIEW:
+        return {
+          ...state,
+          Set_Page_View: action.Set_Page_View
         };
     default:
       return state;

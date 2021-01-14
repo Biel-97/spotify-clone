@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useStateValue } from "../DataProvider";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faSortDown } from '@fortawesome/free-solid-svg-icons'
+
 import DisplayBodyElements from './DisplayBodyElements'
 import './display.css'
 
 function Display() {
     const [{ discover_weekly, user, Next_playlist }, dispatch] = useStateValue();
-    const [usericon, setusericon] = useState()
 
     const [header, setHeader] = useState({})
 
 
     useEffect(() => {
         if (user !== undefined && Next_playlist == '') {
-            if (user.images) {
-                setusericon(
-                    <span className="user-icon">
-                        <FontAwesomeIcon icon={faUser} />
-                        {user.display_name}
-                        <FontAwesomeIcon icon={faSortDown} />
-                    </span>
-                )
-            } else { setusericon(user.images[0]) }
             if (discover_weekly !== undefined && discover_weekly !== null) {
 
                 setHeader({
@@ -34,15 +23,7 @@ function Display() {
             }
         }
         if(user !== undefined &&  Next_playlist !== ''){
-            if (user.images) {
-                setusericon(
-                    <span className="user-icon">
-                        <FontAwesomeIcon icon={faUser} />
-                        {user.display_name}
-                        <FontAwesomeIcon icon={faSortDown} />
-                    </span>
-                )
-            } else { setusericon(user.images[0]) }
+
             if (Next_playlist !== undefined && Next_playlist !== null) {
 
                 setHeader({
@@ -58,7 +39,6 @@ function Display() {
         <>
             <main className="display">
                 <div className="display-header">
-                    {usericon}
                     <div className="header-banner">
                         <img className="baner-img" src={header.img} alt="" />
                         <div>
