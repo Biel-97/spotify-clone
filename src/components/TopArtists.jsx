@@ -13,9 +13,9 @@ function TopArtists() {
         if (top_artists !== null) {
 
             top_artists.items.forEach(element => {
-
+                console.log(element)
                 list.push(
-                    <div className="artists-Card">
+                    <div key={element.id} className="artists-Card">
                         <i >
                             <img src={element.images[1].url} alt="" />
                             <span className="play-button-card">

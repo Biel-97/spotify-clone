@@ -21,7 +21,7 @@ function DisplayBodyElements() {
                 </div>
                 <div className="title">
 
-                    <span className="hash"><span>#</span> TÍTULO</span>
+                    <span className="hash"><span>#</span> TITLE</span>
                     <span className="title-music album">ÁLBUM</span>
                     <span className="added_at"><FontAwesomeIcon icon={faCalendarAlt}/> </span>
                     <span className="span-time"><FontAwesomeIcon icon={faClock} /></span>

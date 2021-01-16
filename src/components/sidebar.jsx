@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import SideElement from './SideElements'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faSearch, faStream } from '@fortawesome/free-solid-svg-icons'
+import { faHome} from '@fortawesome/free-solid-svg-icons'
 import { faSpotify } from '@fortawesome/free-brands-svg-icons'
 import { useStateValue } from "../DataProvider";
 
@@ -52,10 +52,7 @@ function Login() {
                 </a>
             </h1>
             <div className="side-header">
-                <SideElement text={'Inicio'} Icon={<FontAwesomeIcon icon={faHome} />}></SideElement>
-                {/* <SideElement text={'Pesquisa'} Icon={<FontAwesomeIcon icon={faSearch} />}></SideElement> */}
-                <SideElement text={'Sua biblioteca'} Icon={<FontAwesomeIcon icon={faStream} />}></SideElement>
-
+                <SideElement text={'Home'} Icon={<FontAwesomeIcon icon={faHome} />}></SideElement>
             </div>
 
             <br />

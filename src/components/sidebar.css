@@ -13,6 +13,8 @@
     margin-bottom: 10px;
 }
 .side-icon > a{
+    display: flex;
+    align-self: center;
     color: white;
     text-decoration: none;
 }
@@ -33,6 +35,7 @@
     width: 233px;
     height: 100%;
     font-family: 'Roboto', sans-serif;
+    padding: 15px;
 }
 .Sidebar-option{
     display: flex;

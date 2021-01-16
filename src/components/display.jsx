@@ -15,7 +15,7 @@ function Display() {
             if (discover_weekly !== undefined && discover_weekly !== null) {
 
                 setHeader({
-                    img: discover_weekly.images[0].url,
+                    img: discover_weekly.images[0]?.url,
                     description: discover_weekly.description,
                     name_Banner: discover_weekly.name
                 })
@@ -25,9 +25,10 @@ function Display() {
         if(user !== undefined &&  Next_playlist !== ''){
 
             if (Next_playlist !== undefined && Next_playlist !== null) {
+                console.log(Next_playlist)
 
                 setHeader({
-                    img: Next_playlist.images[0].url,
+                    img: Next_playlist.images[0]?.url,
                     description: Next_playlist.description,
                     name_Banner: Next_playlist.name
                 })

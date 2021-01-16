@@ -2,7 +2,7 @@ import React from 'react'
 
 export const GoToAlbum = (album) => <a target="_blank" href={album.external_urls.spotify}>{album.name}</a>
 
-export const GoToMusic = (music) => <a target="_blank" href={music.external_urls.spotify}>{music.name}</a>
+export const GoToMusic = (music) => <a className="music" target="_blank" href={music.external_urls.spotify}>{music.name}</a>
 
 export const GoToArtists = (names) => {
     let retorno = names.map(e => {

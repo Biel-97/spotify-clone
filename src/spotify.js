@@ -6,11 +6,9 @@ const redirectUrl = process.env.REACT_APP_REDIRECT_URL
 const ID = process.env.REACT_APP_ID
 
 const scopos = [
-  'user-read-currently-playing',
-  'user-read-recently-played',
-  'user-read-playback-state',
+   'user-read-currently-playing',
+   'user-read-recently-played',
   'user-top-read',
-  'user-modify-playback-state',
   'user-library-read'
 ]
 

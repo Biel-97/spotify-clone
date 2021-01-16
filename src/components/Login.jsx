@@ -49,7 +49,7 @@ function Login() {
             </div>
 
             <div className="button-line">
-                <button className="login-button"><a href={LoginUrl}>LOQ IN</a></button>
+                <button className="login-button"><a href={LoginUrl}>Login</a></button>
             </div>
         </div>
     )

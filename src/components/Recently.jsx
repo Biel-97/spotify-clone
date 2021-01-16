@@ -20,13 +20,13 @@ function Recently() {
 
         if (Recently_Played !== null) {
             let albuns = []
-            let aluns_diff = []
             let albuns_sam = []
+            let albuns_diff = []
             Recently_Played.items.map((e) => {
-                aluns_diff = albuns.filter(element => {
+                albuns.filter(element => {
                     if (element.album !== e.track.album.name) {
                         return e.track.album.name
-                    }else {
+                    } else {
                         albuns_sam.push({
                             album: e.track.album.name,
                             albumIMG: e.track.album.images[1].url,
@@ -43,8 +43,13 @@ function Recently() {
                     artists: e.track.album.artists
                 })
             })
-            aluns_diff.push(albuns_sam[0])
-            SetAlbumCard(aluns_diff)
+            albuns.filter(e => {
+                if (e.album !== albuns_sam[0].album) {
+                    albuns_diff.push(e)
+                }
+            })
+            albuns_diff.push(albuns_sam[0])
+            SetAlbumCard(albuns_diff)
         }
     }, [Recently_Played])
 
@@ -56,7 +61,7 @@ function Recently() {
             params.forEach((e) => {
 
                 card.push(
-                    <div key={getKey()} className="album-card">
+                    <div key={e.album || getKey()} className="album-card">
                         <i className="album-button-play">
                             <img src={e.albumIMG} alt="" />
                             <span className='play-button-card'>
@@ -86,13 +91,13 @@ function Recently() {
 
         playButton.parentNode.style.bottom = '10px'
 
-        
+
 
     }
     function setColorOut(e) {
         const playButton = e.target.closest('.album-card').firstChild.lastChild.childNodes[0]
         e.target.closest(".card-link").style.background = 'transparent'
-        
+
         playButton.parentNode.style.transition = '200ms ease-in'
         playButton.parentNode.style.opacity = '0'
         playButton.parentNode.style.bottom = '0px'

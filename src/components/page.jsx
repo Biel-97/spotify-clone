@@ -44,15 +44,9 @@ function Page() {
 
     return (
         <>
+
             <div className="content">
                 <Sidebar></Sidebar>
-            {/* <div className="user-icon">
-
-                {(user?.images[0]?.url) !== undefined ? <img src={user?.images[0]?.url} alt="" /> : <FontAwesomeIcon icon={faUser} />}
-                <span>{user?.display_name}</span>
-                <FontAwesomeIcon icon={faSortDown} />
-            </div> */}
-
                 {Set_Page_View == true ? <Home /> : <Display />}
 
             </div>

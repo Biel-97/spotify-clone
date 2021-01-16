@@ -1,18 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react'
 import './footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlayCircle, faPauseCircle } from '@fortawesome/free-solid-svg-icons'
+import { faPlayCircle, faPauseCircle, faVolumeDown, faVolumeUp, faVolumeMute, faVolumeOff } from '@fortawesome/free-solid-svg-icons'
 
 import { GoToAlbum, GoToArtists } from './utils'
-
 import { useStateValue } from "../DataProvider";
 
 
 
-
-
 function Footer() {
-    
+
     const [{ track }, dispatch] = useStateValue();
     const [currentTime, setcurrentTime] = useState('0')
     const [playPromise, setplayPromise] = useState()
@@ -35,39 +32,33 @@ function Footer() {
 
     useEffect(() => {
         setInterval(function () {
-            if(audioPlayer !== null){
+            if (audioPlayer !== null) {
                 setcurrentTime(parseFloat(audioPlayer.current.currentTime).toFixed(0))
-                if (audioPlayer.current.currentTime >= 29.9) { changeButton(1) }
-            }if(audioPlayer == null){
+                if (audioPlayer.current.currentTime >= 29.9) { changeButton(true) }
+            } if (audioPlayer == null) {
                 console.log('erro')
                 console.log(audioPlayer)
             }
+            document.querySelector('.slider').value = parseFloat(audioPlayer.current.currentTime).toFixed(0)
         }, 1000)
+        document.querySelector('.vol-slider').value = '20'
+        audioPlayer.current.volume = (document.querySelector('.vol-slider').value / 100)
     }, [])
 
     useEffect(() => {
         if (track !== null && track !== '') {
+            audioPlayer.current.currentTime = 0
             startTrack()
         }
     }, [track])
 
-
-    const backstep = () => {
-        audioPlayer.current.load()
-        audioPlayer.current.play()
-    }
-
-
     const startTrack = (e) => {
         if (track !== null && track !== '') {
-            changeButton(1)
-            audioPlayer.current.volume = 0.3
+            changeButton(true)
+            audioPlayer.current.volume = document.querySelector('.vol-slider').value / 100
             setplayPromise(audioPlayer.current.play())
         }
     }
-
-
-
 
     const pauseTrack = (e) => {
         if (playPromise !== undefined) {
@@ -82,12 +73,43 @@ function Footer() {
         }
     }
 
-    const callNext = (e) => {
-        console.log(e)
-    }
 
+    function setRangeMusic(e) {
+        audioPlayer.current.currentTime = e.target.value
+        setcurrentTime(e.target.value)
+    }
+    function setVolume(e) {
+        audioPlayer.current.volume = (e.target.value / 100)
+        const muteVolume = document.querySelector('.mute-volume')
+        const offVolume = document.querySelector('.off-volume')
+        const downVolume = document.querySelector('.down-volume')
+        const upVolume = document.querySelector('.up-volume')
+        if((e.target.value / 100) == 0){
+            muteVolume.style.display = 'block'
+            offVolume.style.display = 'none'
+            downVolume.style.display = 'none'
+            upVolume.style.display = 'none'
+
+        }if((e.target.value / 100) > 0.01  && (e.target.value / 100) < 0.3){
+            offVolume.style.display = 'block'
+            muteVolume.style.display = 'none'
+            downVolume.style.display = 'none'
+            upVolume.style.display = 'none'
+        }if((e.target.value / 100) > 0.31  && (e.target.value / 100) < 0.65){
+            downVolume.style.display = 'block'
+            offVolume.style.display = 'none'
+            muteVolume.style.display = 'none'
+            upVolume.style.display = 'none'
+
+        }if((e.target.value / 100) > 0.66  && (e.target.value / 100) < 1){
+            upVolume.style.display = 'block'
+            muteVolume.style.display = 'none'
+            offVolume.style.display = 'none'
+            downVolume.style.display = 'none'
+        }
+    }
     return (
-        <div className="footer">
+        <footer className="footer">
             <div className="card-icon-info">
 
 
@@ -106,18 +128,30 @@ function Footer() {
             <div className="controls">
                 <audio src={track.preview} ref={audioPlayer}
                 ><p>Seu nevegador não suporta o elemento audio</p></audio>
-                <span className="cont-timer">0:{currentTime}</span>
 
-                {/* <button onClick={() => backstep()}><FontAwesomeIcon icon={faStepBackward} /></button> */}
+                <div className="buttons">
+                    <button className="pause" ref={StopButton} onClick={(e) => pauseTrack(e)}><FontAwesomeIcon icon={faPauseCircle} /></button>
+                    <button className="start" ref={playButton} onClick={(e) => startTrack(e)}><FontAwesomeIcon icon={faPlayCircle} /></button>
 
-                <button className="pause" ref={StopButton} onClick={(e) => pauseTrack(e)}><FontAwesomeIcon icon={faPauseCircle} /></button>
-                <button className="start" ref={playButton} onClick={(e) => startTrack(e)}><FontAwesomeIcon icon={faPlayCircle} /></button>
+                </div>
+                <div className="slidecontainer">
 
-                {/* <button onClick={(e) => callNext()}><FontAwesomeIcon icon={faStepForward} /></button> */}
-
-                <span className="max-timer">0:30</span>
+                    <span className="cont-timer">{currentTime}</span>
+                    <input onChange={e => setRangeMusic(e)} type="range" min="0" max="30" step="1" className="slider" />
+                    <span className="max-timer">0:30</span>
+                </div>
             </div>
-        </div>
+            <div className="volume">
+                <span >
+                    <span className="mute-volume"><FontAwesomeIcon icon={faVolumeMute} /></span>
+                    <span className="off-volume"><FontAwesomeIcon icon={faVolumeOff} /></span>
+                    <span className="down-volume"><FontAwesomeIcon icon={faVolumeDown} /></span>
+                    <span className="up-volume"><FontAwesomeIcon icon={faVolumeUp} /></span>
+                </span>
+
+                <input onChange={e => setVolume(e)} className="slider vol-slider" type="range" min="0" max="100" step="1" />
+            </div>
+        </footer>
     )
 }
 

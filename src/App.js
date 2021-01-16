@@ -34,8 +34,8 @@ function App() {
         })
       })
       if (Next_playlist.name == discover_weekly.name && display !== null) {
-        display.style.background = `linear-gradient(180deg, rgb(236, 142, 181)  0%, rgb(18,18,18) 69%)`
-        displayBody.style.background = `linear-gradient(180deg, rgb(73, 48, 59) 0%, rgba(18,18,18,1) 8%)`
+        display.style.background = `linear-gradient(180deg, rgb(15, 129, 80)  0%, rgb(18,18,18) 69%)`
+        displayBody.style.background = `linear-gradient(180deg, rgb(15, 129, 80) 0%, rgba(18,18,18,1) 8%)`
       }
 
     } else {

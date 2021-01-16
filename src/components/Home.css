@@ -1,10 +1,12 @@
 .home-page{
     background: rgb(16, 16, 16);
-    width: 100%;
+    width: calc(100% - 233px);
+    height: 100%;
     color: white;
     font-family: 'IBM Plex Sans', sans-serif;
     overflow-y: auto;
     overflow-x: hidden;
+    z-index: 2; 
 }
 .play-button-card{
     background: rgb(84,159,84);
@@ -23,34 +25,15 @@
 
 
 @media (max-width: 1070px) { 
-    .album-card{
-        padding: 5px;
-        height: 210px;
-        width: 140px;
-        margin: 5px;
-    }
-    .album-card >i >img {
-        position: absolute;
-        height: 120px;
-        align-self: center;
-    }
-    .album-card > i {
-        height: 125px;
-        display: flex;
-        justify-content: center;
-    }
     .album-artists > a{
         font-size: 12px;
         margin-top: 5px;
     }
-    /* .album-artists{
-        margin: 0px 0px 0px 0px;
-    } */
-    .album-card > span{
-        margin: 0px 0px 0px 0px;
+    .topArtists{
+        margin: 10px 0px 10px 10px!important;
     }
-    .Recently, .topArtists{
-        margin: 40px 0px 10px 10px!important;
+    .Recently{
+        margin: 50px 0px 10px 10px!important;
     }
     .Recently-cards{
         max-height: 435px;
@@ -58,11 +41,17 @@
  }
  @media (max-width: 631px) { 
     .Recently-cards{
-        height: 445px;
         min-width: 425px;
         height: 570px;
     }
+    .topArtists{
+        min-width: 425px;
+    }
     .Recently h1{
         font-size: 25px;
+        margin-top: 30px;
+    }
+    .Recently {
+        margin-top: 50px!important;
     }
  }

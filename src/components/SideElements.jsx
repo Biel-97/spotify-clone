@@ -6,7 +6,7 @@ function SideElement({ text, Icon }) {
   const [{ }, dispatch] = useStateValue();
 
   function back(e) {
-    if (text == 'Inicio') {
+    if (text == 'Home') {
 
       dispatch({
         type: ACTION.SET_PAGE_VIEW,
