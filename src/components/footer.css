@@ -99,6 +99,7 @@ audio{
 
 .card-icon-info{
     left: 20px;
+    margin-left: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;

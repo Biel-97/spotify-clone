@@ -49,7 +49,9 @@ function Recently() {
                 }
             })
             albuns_diff.push(albuns_sam[0])
-            SetAlbumCard(albuns_diff)
+            if(albuns_diff.length > 1){
+                SetAlbumCard(albuns_diff)
+            }
         }
     }, [Recently_Played])
 

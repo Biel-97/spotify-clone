@@ -6,20 +6,18 @@ function SideElement({ text, Icon }) {
   const [{ }, dispatch] = useStateValue();
 
   function back(e) {
-    if (text == 'Home') {
+    if (text === 'Home') {
 
       dispatch({
         type: ACTION.SET_PAGE_VIEW,
         Set_Page_View: true
       });
 
-    }else if(text == 'Sua biblioteca'){
-      console.log('Sua biblioteca')
+    }else if(text === 'Sua biblioteca'){
     }
 
     if (!Icon) {
 
-      console.log('Va para a playlist ' + text)
       dispatch({
         type: ACTION.SET_PAGE_VIEW,
         Set_Page_View: false
