@@ -42,7 +42,7 @@ function Login() {
                 </span>
 
                 <span className="github">
-                    <a href="https://github.com/Biel-97" target="_blank">
+                    <a href="https://github.com/gabrielp-oliveira" target="_blank">
                         <FontAwesomeIcon icon={faGithub} /> Contact with Github
                     </a>
                 </span>

@@ -34,7 +34,7 @@
 
 <br>
 <h2>Cloning the Repository</h2><br>
-<span>$ git clone https://github.com/Biel-97/spotify-clone</span><br>
+<span>$ git clone https://github.com/gabrielp-oliveira/spotify-clone</span><br>
 <span>$ cd spotify-clone</span><br>
 <span>$ npm install</span><br><br>
 
